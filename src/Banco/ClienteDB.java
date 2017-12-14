@@ -63,9 +63,12 @@ public class ClienteDB {
         x.setObs(obs);
         x.setEmail(email);
         x.setIdade(idade);
-        if(cpf.length() != 11){
-            return "CPF inválido!";
-        }
+        //if(idade <= 0 ){
+           // return "Digite uma idade válida.";
+       // }
+        //if(cpf.length() != 11){
+          //  return "CPF inválido!";
+        //}
         String sql = "INSERT INTO clientes(cpf, nome, email, idade, telefone, endereco, observacoes) VALUES(?,?,?,?,?,?,?)";    
         try {    
             PreparedStatement stmt = db.getConnections().prepareStatement(sql);    
