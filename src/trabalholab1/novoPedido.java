@@ -9,9 +9,11 @@ import Banco.ClienteDB;
 import Banco.Conector;
 import Banco.FuncionarioDB;
 import Banco.PedidosDB;
+import Banco.PessoasDB;
 import javax.swing.JOptionPane;
 import models.Clientes;
 import models.Funcionarios;
+import models.Pessoas;
 
 /**
  *
@@ -56,8 +58,7 @@ public class novoPedido extends javax.swing.JFrame {
         jTextFieldFormTelefone = new javax.swing.JTextField();
         jLabelEndereco = new javax.swing.JLabel();
         jLabelTelefone = new javax.swing.JLabel();
-        jRadioButtonCliente = new javax.swing.JRadioButton();
-        jRadioButtonFuncionario = new javax.swing.JRadioButton();
+        jTextFieldFuncionario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,19 +126,11 @@ public class novoPedido extends javax.swing.JFrame {
 
         jLabelTelefone.setText("Telefone:");
 
-        buttonGroup1.add(jRadioButtonCliente);
-        jRadioButtonCliente.setSelected(true);
-        jRadioButtonCliente.setText("Cliente");
-        jRadioButtonCliente.setActionCommand("cliente");
-        jRadioButtonCliente.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonClienteActionPerformed(evt);
+                jTextFieldFuncionarioActionPerformed(evt);
             }
         });
-
-        buttonGroup1.add(jRadioButtonFuncionario);
-        jRadioButtonFuncionario.setText("Funcionário");
-        jRadioButtonFuncionario.setActionCommand("funcionário");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,52 +138,45 @@ public class novoPedido extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jTextFieldFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCadastrar)
                 .addGap(211, 211, 211))
             .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabelNome)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabelEndereco)
+                    .addComponent(jLabelTelefone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldFormQuantidadeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFormNome, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFormEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFormTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFormCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabelNome)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabelEndereco)
-                            .addComponent(jLabelTelefone))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldFormQuantidadeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldFormNome, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldFormEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldFormTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldFormCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jRadioButtonFuncionario)
-                                    .addComponent(jTextFieldFormCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonBuscarCliente))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jRadioButtonCliente)))
+                        .addComponent(jTextFieldFormCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonBuscarCliente)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonCliente)
-                    .addComponent(jRadioButtonFuncionario))
-                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldFormCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
@@ -250,14 +236,14 @@ public class novoPedido extends javax.swing.JFrame {
         // Como codigoCliente,codigoProduto e quantidadeConbo é um inteiro parseamos o valor do campo que é texto para inteiro
         int id = Integer.parseInt(jTextFieldFormCodigoCliente.getText());
         // Para saber se é cliente
-        boolean radio = jRadioButtonCliente.isSelected();
         //Clientes cli = cliente.buscaClienteUnico(id);
         //jTextFieldFormNome.setText(cli.getNome());
         int codigoProduto = Integer.parseInt(jTextFieldFormCodigoProduto.getText());
         int quantidadeConbo = Integer.parseInt(jTextFieldFormQuantidadeCombo.getText());
         String observacoes = jTextFieldFormObservacoes.getText();
+        String funcionario = jTextFieldFuncionario.getText();
         // Declaramos uma variável para pegar o retorno da chamada da função que fica dentro da classe DadosPedidos
-        String retorno = pedidos.cadastraPedidos(id,  codigoProduto,  quantidadeConbo,  observacoes, radio);
+        String retorno = pedidos.cadastraPedidos(id,  codigoProduto,  quantidadeConbo,  observacoes, funcionario);
         // Imprimimos na tela a mensagem de retorno
         JOptionPane.showMessageDialog(null, retorno);
           //Chamamos nosso jframe e atribuimos a form
@@ -271,35 +257,26 @@ public class novoPedido extends javax.swing.JFrame {
 
     private void jButtonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClienteActionPerformed
         Conector db = new Conector();
-        ClienteDB cliente = new ClienteDB(db);
-        FuncionarioDB funcionario = new FuncionarioDB(db);
-        boolean radio = jRadioButtonCliente.isSelected();
+        PessoasDB pessoa = new PessoasDB(db);
         //verificamos se é cliente ou funcionario 
         //buscamos o id do que foi selecionado no banco de dados e colocamos na descrição do pedido
-        if(radio == true){
             int id = Integer.parseInt(jTextFieldFormCodigoCliente.getText());
-            Clientes cli = cliente.buscaClienteUnico(id);
+            Pessoas cli = pessoa.buscaFuncionarioUnico(id);
             jTextFieldFormNome.setText(cli.getNome());
             jTextFieldFormEndereco.setText(cli.getEndereco());
             jTextFieldFormTelefone.setText(cli.getTelefone());
+            jTextFieldFuncionario.setText(Integer.toString(cli.getFuncionario()));
             
             
-        }else{
-            int id = Integer.parseInt(jTextFieldFormCodigoCliente.getText());
-            Funcionarios fun = funcionario.buscaFuncionarioUnico(id);
-            jTextFieldFormNome.setText(fun.getNome());
-            jTextFieldFormEndereco.setText(fun.getEndereco());
-            jTextFieldFormTelefone.setText(fun.getTelefone());
-        }
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
     private void jTextFieldFormNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFormNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldFormNomeActionPerformed
 
-    private void jRadioButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClienteActionPerformed
+    private void jTextFieldFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncionarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonClienteActionPerformed
+    }//GEN-LAST:event_jTextFieldFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,8 +326,6 @@ public class novoPedido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelTelefone;
-    private javax.swing.JRadioButton jRadioButtonCliente;
-    private javax.swing.JRadioButton jRadioButtonFuncionario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldFormCodigoCliente;
     private javax.swing.JTextField jTextFieldFormCodigoProduto;
@@ -359,5 +334,6 @@ public class novoPedido extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextFieldFormObservacoes;
     private javax.swing.JTextField jTextFieldFormQuantidadeCombo;
     private javax.swing.JTextField jTextFieldFormTelefone;
+    private javax.swing.JTextField jTextFieldFuncionario;
     // End of variables declaration//GEN-END:variables
 }

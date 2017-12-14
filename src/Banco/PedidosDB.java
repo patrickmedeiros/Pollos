@@ -25,7 +25,7 @@ public class PedidosDB {
     //Busca todos os pedidos na base de dados 
     public ArrayList<Pedidos> buscapedidos(){
      try{
-         String SQL = "SELECT pedidos.id, pedidos.codCliente, pedidos.codProduto, pedidos.quantidade, pedidos.status, pedidos.observacoes, pedidos.valor, pedidos.observacoes, cl.nome FROM pedidos INNER JOIN clientes as cl ON cl.id = pedidos.codCliente";
+         String SQL = "SELECT pedidos.id, pedidos.codCliente, pedidos.codProduto, pedidos.quantidade, pedidos.status, pedidos.observacoes, pedidos.valor, pedidos.observacoes, cl.nome FROM pedidos INNER JOIN pessoas as cl ON cl.id = pedidos.codCliente";
          PreparedStatement ps = db.getConnections().prepareStatement(SQL);
          ResultSet rs = ps.executeQuery();
          ArrayList<Pedidos> lista = new ArrayList<Pedidos>();
@@ -52,7 +52,7 @@ public class PedidosDB {
     }
     
     //Cadastra pedido
-    public String cadastraPedidos(int codCliente, int codProduto, int quantidade, String obs, boolean radio){
+    public String cadastraPedidos(int codCliente, int codProduto, int quantidade, String obs, String funcionario){
         //Chamamos a classe Pedidos e atribuimos o valor p
         Pedidos p = new Pedidos();
         Clientes cli = new Clientes();
@@ -77,7 +77,13 @@ public class PedidosDB {
                 return("Código do produto e/ou quantidade foi informado incorretamente!");
                 
         }
-        if(radio){
+        
+        System.out.println(funcionario);
+        
+        int testa = Integer.parseInt(funcionario);
+        System.out.println(funcionario);
+        System.out.println(testa == 0);
+        if(testa == 0){
             desconto = cli.desconto(valor);
             desconto = valor - desconto;
             
