@@ -154,9 +154,12 @@ public class listaFuncionarios extends javax.swing.JFrame {
         if (jTableFuncionarios.getSelectedRow() != -1) {
             Funcionarios p = new Funcionarios();
             p.setId((int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0));
-            int idCli = (int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0);
+            int idFun = (int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0);
             //Chamamos nosso jframe e atribuimos a form
-            editaPessoas form = new editaPessoas(idCli);
+
+//            editaPessoas form = new editaPessoas(idFun);
+
+            editaPessoas form = new editaPessoas(idFun);
             //Aqui setamos para abrir no centro quando aberto
             form.setLocationRelativeTo(null);
             //Deixamos o jframe visivel
@@ -172,14 +175,14 @@ public class listaFuncionarios extends javax.swing.JFrame {
         if (jTableFuncionarios.getSelectedRow() != -1) {
             Conector db = new Conector();
             PessoasDB funcionario = new PessoasDB(db);
-            Funcionarios p = new Funcionarios();
-            p.setId((int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0));
-            int idCli = (int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0);
+            Funcionarios fun = new Funcionarios();
+            fun.setId((int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0));
+            int idFun = (int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0);
             String nome = (String) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 1);
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog (null, "Deseja excluir o funcionário "+nome+"?","Warning",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
-                String retorno = funcionario.deletePessoa(idCli);
+                String retorno = funcionario.deletePessoa(idFun);
                 JOptionPane.showMessageDialog(null, retorno);
                 populatabela();
             }

@@ -292,7 +292,8 @@ public class editaPessoas extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, retorno);
         //Chamamos nosso jframe e atribuimos a form
         // oi vvv
-        listaFuncionarios form = new listaFuncionarios();
+        
+        listaPessoas form = new listaPessoas();
         //Aqui setamos para abrir no centro quando aberto
         form.setLocationRelativeTo(null);
         //Deixamos o jframe visivel
