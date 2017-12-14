@@ -156,7 +156,7 @@ public class listaFuncionarios extends javax.swing.JFrame {
             p.setId((int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0));
             int idCli = (int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0);
             //Chamamos nosso jframe e atribuimos a form
-            editaFuncionarios form = new editaFuncionarios(idCli);
+            editaPessoas form = new editaPessoas(idCli);
             //Aqui setamos para abrir no centro quando aberto
             form.setLocationRelativeTo(null);
             //Deixamos o jframe visivel
@@ -192,7 +192,7 @@ public class listaFuncionarios extends javax.swing.JFrame {
     private void jButtonCadastraNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastraNovoFuncionarioActionPerformed
         // TODO add your handling code here:
         //Chamamos nosso jframe e atribuimos a form
-        cadastroFuncionarios form = new cadastroFuncionarios();
+        cadastraPessoa form = new cadastraPessoa();
         //Aqui setamos para abrir no centro quando aberto
         form.setLocationRelativeTo(null);
         //Deixamos o jframe visivel

@@ -167,7 +167,7 @@ public class listaClientes extends javax.swing.JFrame {
             p.setId((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
             int idCli = (int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0);
             //Chamamos nosso jframe e atribuimos a form
-            editaClientes form = new editaClientes(idCli);
+            editaPessoas form = new editaPessoas(idCli);
             //Aqui setamos para abrir no centro quando aberto
             form.setLocationRelativeTo(null);
             //Deixamos o jframe visivel
@@ -204,7 +204,7 @@ public class listaClientes extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //Chamamos nosso jframe e atribuimos a form
-        cadastroclientes form = new cadastroclientes();
+        cadastraPessoa form = new cadastraPessoa();
         //Aqui setamos para abrir no centro quando aberto
         form.setLocationRelativeTo(null);
         //Deixamos o jframe visivel

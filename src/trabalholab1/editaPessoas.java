@@ -7,6 +7,7 @@ package trabalholab1;
 
 import Banco.Conector;
 import Banco.PessoasDB;
+import models.Pessoas;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,9 +19,30 @@ public class editaPessoas extends javax.swing.JFrame {
     /**
      * Creates new form editaPessoas
      */
-    public editaPessoas() {
-        initComponents();
+    public editaPessoas(int id) {
+         initComponents();
+        // Para fechar a janela e não o sistema
+        setDefaultCloseOperation( DISPOSE_ON_CLOSE );
+        Conector db = new Conector();
+        PessoasDB pessoa = new PessoasDB(db);
+        Pessoas cli = pessoa.buscaFuncionarioUnico(id);
+        jTextFieldFormNome.setText(cli.getNome());
+        jTextFieldFormCpf.setText(cli.getCpf());
+        jTextFieldFormTelefone.setText(cli.getTelefone());
+        jTextFieldFormEndereco.setText(cli.getEndereco());
+        jTextAreaObservacoes.setText(cli.getObs());
+        jTextFieldFormEmail.setText(cli.getEmail());
+        String idade = Integer.toString(cli.getIdade());
+        jTextFieldFormIdade.setText(idade);
+        String idfinal = Integer.toString(cli.getId());
+        jTextFieldFormId.setText(idfinal);
     }
+
+    private editaPessoas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
