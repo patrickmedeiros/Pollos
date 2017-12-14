@@ -11,8 +11,8 @@ package models;
  */
 public class Funcionarios extends Pessoas{
     
-    public Funcionarios(String nome, String cpf, String endereco,String telefone, String email, String observacao, int idade,int id) {
-        super(nome, cpf, endereco, telefone, email, observacao, idade,id);
+    public Funcionarios(String nome, String cpf, String endereco,String telefone, String email, String observacao, int idade,int id, int funcionarios) {
+        super(nome, cpf, endereco, telefone, email, observacao, idade, id, funcionarios);
     }  
 
     public Funcionarios() {

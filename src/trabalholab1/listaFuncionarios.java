@@ -6,7 +6,7 @@
 package trabalholab1;
 
 import Banco.Conector;
-import Banco.FuncionarioDB;
+import Banco.PessoasDB;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -30,8 +30,8 @@ public class listaFuncionarios extends javax.swing.JFrame {
     }
     public void populatabela(){
         Conector db = new Conector();
-        FuncionarioDB clid = new FuncionarioDB(db);
-        ArrayList<Funcionarios> lista = clid.listafuncionariosgeral();
+        PessoasDB pesso = new PessoasDB(db);
+        ArrayList<Funcionarios> lista = pesso.listafuncionariosgeral();
         //Aqui começamos a montar um modelo padrão de tabela
         DefaultTableModel modelo = new DefaultTableModel();
         //Adicionamos as colunas da nossa tabela
@@ -171,7 +171,7 @@ public class listaFuncionarios extends javax.swing.JFrame {
     private void jButtonExcluirFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirFuncionarioActionPerformed
         if (jTableFuncionarios.getSelectedRow() != -1) {
             Conector db = new Conector();
-            FuncionarioDB cliente = new FuncionarioDB(db);
+            PessoasDB funcionario = new PessoasDB(db);
             Funcionarios p = new Funcionarios();
             p.setId((int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0));
             int idCli = (int) jTableFuncionarios.getValueAt(jTableFuncionarios.getSelectedRow(), 0);
@@ -179,7 +179,7 @@ public class listaFuncionarios extends javax.swing.JFrame {
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog (null, "Deseja excluir o funcionário "+nome+"?","Warning",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
-                String retorno = cliente.deleteFuncionario(idCli);
+                String retorno = funcionario.deletePessoa(idCli);
                 JOptionPane.showMessageDialog(null, retorno);
                 populatabela();
             }

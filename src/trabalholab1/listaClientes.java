@@ -6,8 +6,8 @@
 package trabalholab1;
 
 import models.Clientes;
-import Banco.ClienteDB;
 import Banco.Conector;
+import Banco.PessoasDB;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -33,7 +33,7 @@ public class listaClientes extends javax.swing.JFrame {
     
     public void populatabela(){
         Conector db = new Conector();
-        ClienteDB clid = new ClienteDB(db);
+        PessoasDB clid = new PessoasDB(db);
         ArrayList<Clientes> lista = clid.listaclientesgeral();
         //Aqui começamos a montar um modelo padrão de tabela
         DefaultTableModel modelo = new DefaultTableModel();
@@ -182,7 +182,7 @@ public class listaClientes extends javax.swing.JFrame {
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         if (jTableClientes.getSelectedRow() != -1) {
             Conector db = new Conector();
-            ClienteDB cliente = new ClienteDB(db);
+            PessoasDB cliente = new PessoasDB(db);
             Clientes p = new Clientes();
             p.setId((int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0));
             int idCli = (int) jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 0);
@@ -190,7 +190,7 @@ public class listaClientes extends javax.swing.JFrame {
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog (null, "Deseja excluir o cliente "+nome+"?","Warning",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
-                String retorno = cliente.deleteCliente(idCli);
+                String retorno = cliente.deletePessoa(idCli);
                 JOptionPane.showMessageDialog(null, retorno);
                 populatabela();
             }
