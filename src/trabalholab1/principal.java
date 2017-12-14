@@ -38,10 +38,8 @@ public class principal extends javax.swing.JFrame {
         jLabelFundoPollos = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItemCadastraCliente = new javax.swing.JMenuItem();
+        jMenuItemCadastra = new javax.swing.JMenuItem();
         jMenuItemListaClientes = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItemCadastraFuncionarios = new javax.swing.JMenuItem();
         jMenuItemListaFuncionarios = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemNovoPedido = new javax.swing.JMenuItem();
@@ -57,17 +55,17 @@ public class principal extends javax.swing.JFrame {
         jLabelFundoPollos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pollosmin.png"))); // NOI18N
         getContentPane().add(jLabelFundoPollos);
 
-        jMenu1.setText("Clientes");
+        jMenu1.setText("Pessoas");
 
-        jMenuItemCadastraCliente.setText("Cadastrar");
-        jMenuItemCadastraCliente.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCadastra.setText("Cadastrar");
+        jMenuItemCadastra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCadastraClienteActionPerformed(evt);
+                jMenuItemCadastraActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemCadastraCliente);
+        jMenu1.add(jMenuItemCadastra);
 
-        jMenuItemListaClientes.setText("Listar");
+        jMenuItemListaClientes.setText("Listar Clientes");
         jMenuItemListaClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemListaClientesActionPerformed(evt);
@@ -75,27 +73,15 @@ public class principal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemListaClientes);
 
-        jMenuBar1.add(jMenu1);
-
-        jMenu5.setText("Funcionários");
-
-        jMenuItemCadastraFuncionarios.setText("Cadastrar");
-        jMenuItemCadastraFuncionarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCadastraFuncionariosActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItemCadastraFuncionarios);
-
-        jMenuItemListaFuncionarios.setText("Listar");
+        jMenuItemListaFuncionarios.setText("Listar Funcionários");
         jMenuItemListaFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemListaFuncionariosActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItemListaFuncionarios);
+        jMenu1.add(jMenuItemListaFuncionarios);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Pedidos");
 
@@ -170,15 +156,15 @@ public class principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemCadastraClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastraClienteActionPerformed
+    private void jMenuItemCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastraActionPerformed
         //Chamamos nosso jframe e atribuimos a form
-        cadastroclientes form = new cadastroclientes();
+        cadastraPessoa form = new cadastraPessoa();
         //Aqui setamos para abrir no centro quando aberto
         form.setLocationRelativeTo(null);
         //Deixamos o jframe visivel
         form.setVisible(true);
             
-    }//GEN-LAST:event_jMenuItemCadastraClienteActionPerformed
+    }//GEN-LAST:event_jMenuItemCadastraActionPerformed
 
     private void jMenuItemListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaClientesActionPerformed
         //Chamamos nosso jframe e atribuimos a form
@@ -236,15 +222,6 @@ public class principal extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_jMenuItemListaPedidosActionPerformed
 
-    private void jMenuItemCadastraFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastraFuncionariosActionPerformed
-        //Chamamos nosso jframe e atribuimos a form
-        cadastroFuncionarios form = new cadastroFuncionarios();
-        //Aqui setamos para abrir no centro quando aberto
-        form.setLocationRelativeTo(null);
-        //Deixamos o jframe visivel
-        form.setVisible(true);
-    }//GEN-LAST:event_jMenuItemCadastraFuncionariosActionPerformed
-
     private void jMenuItemListaFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaFuncionariosActionPerformed
         //Chamamos nosso jframe e atribuimos a form
         listaFuncionarios form = new listaFuncionarios();
@@ -297,10 +274,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItemCadastraCliente;
-    private javax.swing.JMenuItem jMenuItemCadastraFuncionarios;
+    private javax.swing.JMenuItem jMenuItemCadastra;
     private javax.swing.JMenuItem jMenuItemListaClientes;
     private javax.swing.JMenuItem jMenuItemListaFuncionarios;
     private javax.swing.JMenuItem jMenuItemListaPedidos;
