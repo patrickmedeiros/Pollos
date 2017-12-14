@@ -5,7 +5,7 @@
  */
 package trabalholab1;
 
-import Banco.ClienteDB;
+
 import Banco.Conector;
 import Banco.PedidosDB;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import models.Pedidos;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import models.Clientes;
+
 
 /**
  *
@@ -32,9 +32,6 @@ public class listaPedidos extends javax.swing.JFrame {
         populatabela();
     }
     
-    listaPedidos(List<Pedidos> pedidosGeral) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     public void populatabela(){
         Conector db = new Conector();
         //Chamamos a classe Pedidos e atribuimos o valor pedidos
@@ -55,10 +52,11 @@ public class listaPedidos extends javax.swing.JFrame {
         // contador para coluna
         int cont = 0;
         // damos um "forEach" onde para cada possição do nosso array e a cada volta atribuimos a obj
+        if(lista != null){
         for(Pedidos obj : lista){
             //Aqui começamos a setar os valores onde o parametro 1 (dado), parametro 2(linha), parametro 3(coluna)
             modelo.setValueAt(obj.getId(),cont,0);
-            modelo.setValueAt(obj.getNomeCliente(),cont,1);
+            modelo.setValueAt(obj.getNome(),cont,1);
             modelo.setValueAt(obj.getCodProduto(),cont,2);
             modelo.setValueAt(obj.getQuantidade(),cont,3);
             modelo.setValueAt(obj.getStatus(),cont,4);
@@ -69,6 +67,7 @@ public class listaPedidos extends javax.swing.JFrame {
         // Setamos o novo modelo de tabela na nossa tabela que chamamos de jTablePedidos
         jTablePedidos.setModel(modelo);
 //        System.out.println("linhaaa "+jTablePedidos.getSelectedRow());
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.

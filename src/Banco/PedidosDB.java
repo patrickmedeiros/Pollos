@@ -33,7 +33,7 @@ public class PedidosDB {
              ped.setId(rs.getInt("id"));
              ped.setCodCliente(rs.getInt("codCliente"));
              ped.setCodProduto(rs.getInt("codProduto"));
-             ped.setNomeCliente(rs.getString("nome"));
+             ped.setNome(rs.getString("nome"));
              ped.setQuantidade(rs.getInt("quantidade"));
              ped.setValor(rs.getDouble("valor"));
              ped.setStatus(rs.getString("status"));
@@ -109,7 +109,7 @@ public class PedidosDB {
             ped.setId(rs.getInt("id"));
             ped.setCodCliente(rs.getInt("codCliente"));
             ped.setCodProduto(rs.getInt("codProduto"));
-            ped.setNomeCliente(rs.getString("nome"));
+            ped.setNome(rs.getString("nome"));
             ped.setQuantidade(rs.getInt("quantidade"));
             ped.setValor(rs.getDouble("valor"));
             ped.setStatus(rs.getString("status"));

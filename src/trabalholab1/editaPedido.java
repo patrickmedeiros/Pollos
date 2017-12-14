@@ -27,7 +27,7 @@ public class editaPedido extends javax.swing.JFrame {
         Conector db = new Conector();
         PedidosDB pedido = new PedidosDB(db);
         Pedidos ped = pedido.buscaPedidoUnico(id);
-        jTextFieldFormCodigoCliente.setText(ped.getNomeCliente());
+        jTextFieldFormCodigoCliente.setText(ped.getNome());
         String codProduto = Integer.toString(ped.getCodProduto());
         jTextFieldFormCodigoProduto.setText(codProduto);
         String quantidade = Integer.toString(ped.getQuantidade());

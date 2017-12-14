@@ -20,7 +20,7 @@ public class Pedidos {
     public String status;
     public int id;
     public double valor;
-    public String nomeCliente;
+    public String nome;
 
     public int getCodCliente() {
         return codCliente;
@@ -62,8 +62,6 @@ public class Pedidos {
         this.status = status;
     }
 
-    
-
     public double getValor() {
         return valor;
     }
@@ -80,12 +78,12 @@ public class Pedidos {
         this.id = id;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setNome(String nomeCliente) {
+        this.nome = nomeCliente;
     }
     
    
