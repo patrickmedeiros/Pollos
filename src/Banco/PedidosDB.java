@@ -10,7 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import models.Pedidos;
-
+import models.Clientes;
+import models.Funcionarios;
 /**
  *
  * @author gabrielrm
@@ -51,11 +52,14 @@ public class PedidosDB {
     }
     
     //Cadastra pedido
-    public String cadastraPedidos(int codCliente, int codProduto, int quantidade, String obs){
+    public String cadastraPedidos(int codCliente, int codProduto, int quantidade, String obs, boolean radio){
         //Chamamos a classe Pedidos e atribuimos o valor p
         Pedidos p = new Pedidos();
+        Clientes cli = new Clientes();
+        Funcionarios fun = new Funcionarios();
         // Var valor para armazenar o custo do pedido conforme a quantidade
-        int valor;
+        double valor;
+        double desconto;
         // Switch pelo codProduto, conforme o cod um valor diferente
         switch(codProduto){
             // Valores 28, 23 e 25 são os preços dos combos que estão na jframe cardapio
@@ -73,12 +77,21 @@ public class PedidosDB {
                 return("Código do produto e/ou quantidade foi informado incorretamente!");
                 
         }
+        if(radio){
+            desconto = cli.desconto(valor);
+            desconto = valor - desconto;
+            
+        } else {
+            desconto = fun.desconto(valor);
+            System.out.printf("desconto funcionario"+desconto );
+            desconto = valor - desconto;
+        }
         // Vamos setando os valores do nosso pedido conforme os valores que foram passados por parametro
         p.setCodCliente(codCliente);
         p.setCodProduto(codProduto);
         p.setQuantidade(quantidade);
         p.setObservacoes(obs);
-        p.setValor(valor);
+        p.setValor(desconto);
         p.setStatus("pendente");
         // Aqui adicionamos o pedido ao banco
         String sql = "INSERT INTO pedidos(codCliente, codProduto, quantidade, valor, status, observacoes) VALUES(?,?,?,?,?,?)";    

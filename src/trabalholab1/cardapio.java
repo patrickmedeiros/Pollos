@@ -62,7 +62,7 @@ public class cardapio extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cardápio");
+        jLabel1.setText("Cardápio - Pollos");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/combopollos1.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());

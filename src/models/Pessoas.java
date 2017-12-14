@@ -101,8 +101,8 @@ public class Pessoas {
     }
     
     
-    public void desconto(double desc){
-        this.desc = desc * 0.1;
+    public double desconto(double desc){
+        return this.desc = desc * 0.1;
     }
     
 }

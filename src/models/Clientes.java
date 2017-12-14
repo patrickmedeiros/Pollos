@@ -20,8 +20,8 @@ public class Clientes extends Pessoas{
     }
     
     @Override
-    public void desconto(double desc){
-        this.desc = desc * 0.2;
+    public double desconto(double desc){
+        return this.desc = desc * 0.2;
     }
 
 }

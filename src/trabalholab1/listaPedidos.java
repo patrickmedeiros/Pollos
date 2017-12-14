@@ -8,6 +8,7 @@ package trabalholab1;
 
 import Banco.Conector;
 import Banco.PedidosDB;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import models.Pedidos;
 import java.util.List;
@@ -54,13 +55,16 @@ public class listaPedidos extends javax.swing.JFrame {
         // damos um "forEach" onde para cada possição do nosso array e a cada volta atribuimos a obj
         if(lista != null){
         for(Pedidos obj : lista){
+            DecimalFormat decimal = new DecimalFormat( "0.##" );
             //Aqui começamos a setar os valores onde o parametro 1 (dado), parametro 2(linha), parametro 3(coluna)
+            String valor = decimal.format(obj.getValor());
+            ///
             modelo.setValueAt(obj.getId(),cont,0);
             modelo.setValueAt(obj.getNome(),cont,1);
             modelo.setValueAt(obj.getCodProduto(),cont,2);
             modelo.setValueAt(obj.getQuantidade(),cont,3);
             modelo.setValueAt(obj.getStatus(),cont,4);
-            modelo.setValueAt(obj.getValor(),cont,5);
+            modelo.setValueAt(valor,cont,5);
             // Acumulamos +1 no nosso contador para colocar os dados em nova linha
             cont++;
         }

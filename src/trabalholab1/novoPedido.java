@@ -102,6 +102,8 @@ public class novoPedido extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldFormNome.setDoubleBuffered(true);
+        jTextFieldFormNome.setEnabled(false);
         jTextFieldFormNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFormNomeActionPerformed(evt);
@@ -116,6 +118,8 @@ public class novoPedido extends javax.swing.JFrame {
                 jButtonBuscarClienteActionPerformed(evt);
             }
         });
+
+        jTextFieldFormEndereco.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
         jLabelEndereco.setText("Endereço:");
 
@@ -245,13 +249,15 @@ public class novoPedido extends javax.swing.JFrame {
         // Declaramos as variáveis e pegamos os valores dos campos com o método getText
         // Como codigoCliente,codigoProduto e quantidadeConbo é um inteiro parseamos o valor do campo que é texto para inteiro
         int id = Integer.parseInt(jTextFieldFormCodigoCliente.getText());
+        // Para saber se é cliente
+        boolean radio = jRadioButtonCliente.isSelected();
         //Clientes cli = cliente.buscaClienteUnico(id);
         //jTextFieldFormNome.setText(cli.getNome());
         int codigoProduto = Integer.parseInt(jTextFieldFormCodigoProduto.getText());
         int quantidadeConbo = Integer.parseInt(jTextFieldFormQuantidadeCombo.getText());
         String observacoes = jTextFieldFormObservacoes.getText();
         // Declaramos uma variável para pegar o retorno da chamada da função que fica dentro da classe DadosPedidos
-        String retorno = pedidos.cadastraPedidos(id,  codigoProduto,  quantidadeConbo,  observacoes);
+        String retorno = pedidos.cadastraPedidos(id,  codigoProduto,  quantidadeConbo,  observacoes, radio);
         // Imprimimos na tela a mensagem de retorno
         JOptionPane.showMessageDialog(null, retorno);
           //Chamamos nosso jframe e atribuimos a form
