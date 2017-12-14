@@ -280,10 +280,10 @@ public class novoPedido extends javax.swing.JFrame {
             
         }else{
             int id = Integer.parseInt(jTextFieldFormCodigoCliente.getText());
-            Clientes cli = cliente.buscaClienteUnico(id);
-            jTextFieldFormNome.setText(cli.getNome());
-            jTextFieldFormEndereco.setText(cli.getEndereco());
-            jTextFieldFormTelefone.setText(cli.getTelefone());
+            Funcionarios fun = funcionario.buscaFuncionarioUnico(id);
+            jTextFieldFormNome.setText(fun.getNome());
+            jTextFieldFormEndereco.setText(fun.getEndereco());
+            jTextFieldFormTelefone.setText(fun.getTelefone());
         }
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
