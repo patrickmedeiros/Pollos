@@ -1,11 +1,10 @@
---Base 
 DROP SCHEMA IF EXISTS pollos;
 CREATE SCHEMA IF NOT EXISTS pollos;
 USE pollos;
 -- Pessoas
 DROP TABLE IF EXISTS pessoas;
 CREATE TABLE IF NOT EXISTS pessoas ( 
-	id INT NULL AUTO_INCREMENT , 
+	id INT NOT NULL AUTO_INCREMENT , 
 	cpf TEXT NOT NULL , 
 	nome TEXT NOT NULL , 
 	idade INT NOT NULL , 
@@ -19,7 +18,7 @@ CREATE TABLE IF NOT EXISTS pessoas (
 -- Pedidos
 DROP TABLE IF EXISTS pedidos;
 CREATE TABLE IF NOT EXISTS pedidos ( 
-	id INT NULL AUTO_INCREMENT , 
+	id INT NOT NULL AUTO_INCREMENT , 
 	codCliente TEXT NOT NULL , 
 	codProduto TEXT NOT NULL , 
 	quantidade INT NOT NULL , 
