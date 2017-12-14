@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import models.Clientes;
 import models.Funcionarios;
 import models.Pessoas;
 
@@ -32,15 +31,15 @@ public class FuncionarioDB {
          ResultSet rs = ps.executeQuery();
          ArrayList<Funcionarios> lista = new ArrayList<Funcionarios>();
          while(rs.next()){
-             Funcionarios cli = new Funcionarios();
-             cli.setId(rs.getInt("id"));
-             cli.setCpf(rs.getString("cpf"));
-             cli.setNome(rs.getString("nome"));
-             cli.setEmail(rs.getString("email"));
-             cli.setTelefone(rs.getString("telefone"));
-             cli.setEndereco(rs.getString("endereco"));
-             cli.setObs(rs.getString("observacoes"));
-             lista.add(cli);
+             Pessoas fun = new Funcionarios();
+             fun.setId(rs.getInt("id"));
+             fun.setCpf(rs.getString("cpf"));
+             fun.setNome(rs.getString("nome"));
+             fun.setEmail(rs.getString("email"));
+             fun.setTelefone(rs.getString("telefone"));
+             fun.setEndereco(rs.getString("endereco"));
+             fun.setObs(rs.getString("observacoes"));
+             lista.add((Funcionarios) fun);
          }
          ps.close();
          return lista;
@@ -52,11 +51,11 @@ public class FuncionarioDB {
      return null;
     }
 
-    // Cadastra Cliente
+    // Cadastra funcionário
     public String cadastraFuncionario(String nome, String cpf, String telefone, String endereco, String obs, String email, int idade){
         //Chamamos a classe Pedidos e atribuimos o valor x
-        Funcionarios x = new Funcionarios();
-        // Vamos setando os valores do nosso cliente conforme os valores que foram passados por parametro
+        Pessoas x = new Funcionarios();
+        // Vamos setando os valores do nosso funcionário conforme os valores que foram passados por parametro
         x.setNome(nome);
         x.setCpf(cpf);
         x.setTelefone(telefone);
@@ -85,7 +84,7 @@ public class FuncionarioDB {
         } 
     }
     
-    // Busca cliente
+    // Busca funcionário
     public Funcionarios buscaFuncionarioUnico(int id){
         try{
             String SQL = "SELECT * FROM funcionarios WHERE id = ?";
@@ -93,7 +92,7 @@ public class FuncionarioDB {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             rs.next();
-            Funcionarios cli = new Funcionarios();
+            Pessoas cli = new Funcionarios();
             cli.setId(rs.getInt("id"));
             cli.setIdade(rs.getInt("idade"));
             cli.setCpf(rs.getString("cpf"));
@@ -103,7 +102,7 @@ public class FuncionarioDB {
             cli.setEndereco(rs.getString("endereco"));
             cli.setObs(rs.getString("observacoes"));
             ps.close();
-            return cli;
+            return (Funcionarios) cli;
         }catch(SQLException ex){
          System.err.println("Erro ao tentar recuperar os dados "+ex.getMessage());
      }catch(Exception ex){
@@ -113,11 +112,11 @@ public class FuncionarioDB {
         return null;
     }
     
-    /// Atualiza Cliente
+    /// Atualiza funcionário
     public String updateFuncionario(int id, String nome, String cpf, String telefone, String endereco, String obs, String email, int idade){
         //Chamamos a classe Pedidos e atribuimos o valor x
-        Funcionarios x = new Funcionarios();
-        // Vamos setando os valores do nosso cliente conforme os valores que foram passados por parametro
+        Pessoas x = new Funcionarios();
+        // Vamos setando os valores do nosso funcionário conforme os valores que foram passados por parametro
         x.setNome(nome);
         x.setCpf(cpf);
         x.setTelefone(telefone);
@@ -148,11 +147,11 @@ public class FuncionarioDB {
         return null;
     }
     
-    // Exclui cliente no banco
+    // Exclui funcionário no banco
     public String deleteFuncionario(int id){
         //Chamamos a classe Pedidos e atribuimos o valor x
         Funcionarios x = new Funcionarios();
-        // Vamos setando os valores do nosso cliente conforme os valores que foram passados por parametro
+        // Vamos setando os valores do funcionário cliente conforme os valores que foram passados por parametro
         x.setId(id);
         String sql = "DELETE FROM funcionarios WHERE id = ?";    
         try {    
