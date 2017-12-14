@@ -282,7 +282,7 @@ public class cadastraPessoa extends javax.swing.JFrame {
         // Imprimimos na tela a mensagem de retorno
         JOptionPane.showMessageDialog(null, retorno);
         //Chamamos nosso jframe e atribuimos a form
-        listaClientes form = new listaClientes();
+        listaPessoas form = new listaPessoas();
         //Aqui setamos para abrir no centro quando aberto
         form.setLocationRelativeTo(null);
         //Deixamos o jframe visivel

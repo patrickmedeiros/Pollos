@@ -138,7 +138,7 @@ public class novoPedido extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -236,12 +236,11 @@ public class novoPedido extends javax.swing.JFrame {
         // Como codigoCliente,codigoProduto e quantidadeConbo é um inteiro parseamos o valor do campo que é texto para inteiro
         int id = Integer.parseInt(jTextFieldFormCodigoCliente.getText());
         // Para saber se é cliente
-        //Clientes cli = cliente.buscaClienteUnico(id);
-        //jTextFieldFormNome.setText(cli.getNome());
         int codigoProduto = Integer.parseInt(jTextFieldFormCodigoProduto.getText());
         int quantidadeConbo = Integer.parseInt(jTextFieldFormQuantidadeCombo.getText());
         String observacoes = jTextFieldFormObservacoes.getText();
-        String funcionario = jTextFieldFuncionario.getText();
+//        String funcionario = jTextFieldFuncionario.getText();int id = Integer.parseInt(
+        int funcionario = Integer.parseInt(jTextFieldFuncionario.getText());
         // Declaramos uma variável para pegar o retorno da chamada da função que fica dentro da classe DadosPedidos
         String retorno = pedidos.cadastraPedidos(id,  codigoProduto,  quantidadeConbo,  observacoes, funcionario);
         // Imprimimos na tela a mensagem de retorno
@@ -262,6 +261,8 @@ public class novoPedido extends javax.swing.JFrame {
         //buscamos o id do que foi selecionado no banco de dados e colocamos na descrição do pedido
             int id = Integer.parseInt(jTextFieldFormCodigoCliente.getText());
             Pessoas cli = pessoa.buscaFuncionarioUnico(id);
+            System.out.println(cli);
+            System.out.println(cli.getFuncionario());
             jTextFieldFormNome.setText(cli.getNome());
             jTextFieldFormEndereco.setText(cli.getEndereco());
             jTextFieldFormTelefone.setText(cli.getTelefone());

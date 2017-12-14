@@ -25,7 +25,7 @@ public class PedidosDB {
     //Busca todos os pedidos na base de dados 
     public ArrayList<Pedidos> buscapedidos(){
      try{
-         String SQL = "SELECT pedidos.id, pedidos.codCliente, pedidos.codProduto, pedidos.quantidade, pedidos.status, pedidos.observacoes, pedidos.valor, pedidos.observacoes, cl.nome FROM pedidos INNER JOIN pessoas as cl ON cl.id = pedidos.codCliente";
+         String SQL = "SELECT pedidos.id, pedidos.codCliente, pedidos.codProduto, pedidos.quantidade, pedidos.status, pedidos.observacoes, pedidos.valor, pedidos.observacoes, cl.nome, cl.funcionario FROM pedidos INNER JOIN pessoas as cl ON cl.id = pedidos.codCliente";
          PreparedStatement ps = db.getConnections().prepareStatement(SQL);
          ResultSet rs = ps.executeQuery();
          ArrayList<Pedidos> lista = new ArrayList<Pedidos>();
@@ -39,6 +39,7 @@ public class PedidosDB {
              ped.setValor(rs.getDouble("valor"));
              ped.setStatus(rs.getString("status"));
              ped.setObservacoes(rs.getString("observacoes"));
+             ped.setCodProduto(rs.getInt("funcionario")); 
              lista.add(ped);
          }
          ps.close();
@@ -52,7 +53,7 @@ public class PedidosDB {
     }
     
     //Cadastra pedido
-    public String cadastraPedidos(int codCliente, int codProduto, int quantidade, String obs, String funcionario){
+    public String cadastraPedidos(int codCliente, int codProduto, int quantidade, String obs, int funcionario){
         //Chamamos a classe Pedidos e atribuimos o valor p
         Pedidos p = new Pedidos();
         Clientes cli = new Clientes();
@@ -78,12 +79,8 @@ public class PedidosDB {
                 
         }
         
-        System.out.println(funcionario);
-        
-        int testa = Integer.parseInt(funcionario);
-        System.out.println(funcionario);
-        System.out.println(testa == 0);
-        if(testa == 0){
+
+        if(funcionario == 0){
             desconto = cli.desconto(valor);
             desconto = valor - desconto;
             
@@ -119,7 +116,7 @@ public class PedidosDB {
     
     public Pedidos buscaPedidoUnico(int id){
         try{
-            String SQL = "SELECT pedidos.id, pedidos.codCliente, pedidos.codProduto, pedidos.quantidade, pedidos.status, pedidos.observacoes, pedidos.valor, pedidos.observacoes, cl.nome FROM pedidos INNER JOIN clientes as cl ON cl.id = pedidos.codCliente WHERE pedidos.id = ?";
+            String SQL = "SELECT pedidos.id, pedidos.codCliente, pedidos.codProduto, pedidos.quantidade, pedidos.status, pedidos.observacoes, pedidos.valor, pedidos.observacoes, cl.nome, cl.funcionario FROM pedidos INNER JOIN pessoas as cl ON cl.id = pedidos.codCliente WHERE pedidos.id = ?";
             PreparedStatement ps = db.getConnections().prepareStatement(SQL);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -133,6 +130,7 @@ public class PedidosDB {
             ped.setValor(rs.getDouble("valor"));
             ped.setStatus(rs.getString("status"));
             ped.setObservacoes(rs.getString("observacoes"));
+            ped.setFuncionario(rs.getInt("funcionario"));
             ps.close();
             return ped;
         }catch(SQLException ex){
@@ -145,11 +143,48 @@ public class PedidosDB {
     }
     
     
-     public String updatePedido(int id,  int codigoProduto,  int quantidadeCombo, String status, String observacoes){
+     public String updatePedido(int id,  int codigoProduto,  int quantidadeCombo, String status, String observacoes, int funcionario){
         
-        Pedidos p = new Pedidos();
+//        Pedidos p = new Pedidos();
+//        Clientes cli = new Clientes();
+//        Funcionarios fun = new Funcionarios();
+//        double valor;
+//        double desconto;
+//        // Var valor para armazenar o custo do pedido conforme a quantidade
+//        // Switch pelo codProduto, conforme o cod um valor diferente
+//        switch(codigoProduto){
+//            // Valores 28, 23 e 25 são os preços dos combos que estão na jframe cardapio
+//            case 1:
+//                valor = 28 * quantidadeCombo;
+//                break;
+//            case 2:
+//                valor = 23 * quantidadeCombo;
+//                break;
+//            case 3:
+//                valor = 25 * quantidadeCombo;
+//                break;
+//            // Caso o codProduto não seja um valor que tenha no cardapio, retorna mensagem de erro
+//            default:
+//                return("Código do produto e/ou quantidade foi informado incorretamente!");
+//                
+//        }
+//         System.out.printf("funcionario:"+funcionario+"\n");
+//         System.out.println(funcionario == 0);
+//        if(funcionario == 0){
+//            desconto = cli.desconto(valor);
+//            desconto = valor - desconto;
+//            
+//        } else {
+//            desconto = fun.desconto(valor);
+//            System.out.printf("desconto funcionario"+desconto );
+//            desconto = valor - desconto;
+//        }
+ Pedidos p = new Pedidos();
+        Clientes cli = new Clientes();
+        Funcionarios fun = new Funcionarios();
         // Var valor para armazenar o custo do pedido conforme a quantidade
-        int valor;
+        double valor;
+        double desconto;
         // Switch pelo codProduto, conforme o cod um valor diferente
         switch(codigoProduto){
             // Valores 28, 23 e 25 são os preços dos combos que estão na jframe cardapio
@@ -167,11 +202,22 @@ public class PedidosDB {
                 return("Código do produto e/ou quantidade foi informado incorretamente!");
                 
         }
+        
+
+        if(funcionario == 0){
+            desconto = cli.desconto(valor);
+            desconto = valor - desconto;
+            
+        } else {
+            desconto = fun.desconto(valor);
+            System.out.printf("desconto funcionario"+desconto );
+            desconto = valor - desconto;
+        }
         // Vamos setando os valores do nosso pedido conforme os valores que foram passados por parametro
         p.setCodProduto(codigoProduto);
         p.setQuantidade(quantidadeCombo);
         p.setObservacoes(observacoes);
-        p.setValor(valor);
+        p.setValor(desconto);
         p.setStatus(status);
         p.setId(id);
         String sql = "UPDATE Pedidos SET codProduto =?, quantidade =?, status =?, valor =?, observacoes =? WHERE id = ?";    

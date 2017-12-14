@@ -21,6 +21,7 @@ public class Pedidos {
     public int id;
     public double valor;
     public String nome;
+    private int funcionario;
 
     public int getCodCliente() {
         return codCliente;
@@ -29,6 +30,15 @@ public class Pedidos {
     public void setCodCliente(int codCliente) {
         this.codCliente = codCliente;
     }
+    
+    public void setFuncionario(int funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public int getFuncionario() {
+        return funcionario;
+    }
+
 
     public int getCodProduto() {
         return codProduto;

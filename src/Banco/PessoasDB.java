@@ -189,6 +189,7 @@ public class PessoasDB {
             cli.setTelefone(rs.getString("telefone"));
             cli.setEndereco(rs.getString("endereco"));
             cli.setObs(rs.getString("observacoes"));
+            cli.setFuncionario(rs.getInt("funcionario"));
             ps.close();
             return (Pessoas) cli;
         }catch(SQLException ex){
