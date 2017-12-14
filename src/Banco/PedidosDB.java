@@ -143,43 +143,9 @@ public class PedidosDB {
     }
     
     
-     public String updatePedido(int id,  int codigoProduto,  int quantidadeCombo, String status, String observacoes, int funcionario){
+    public String updatePedido(int id,  int codigoProduto,  int quantidadeCombo, String status, String observacoes, int funcionario){
         
-//        Pedidos p = new Pedidos();
-//        Clientes cli = new Clientes();
-//        Funcionarios fun = new Funcionarios();
-//        double valor;
-//        double desconto;
-//        // Var valor para armazenar o custo do pedido conforme a quantidade
-//        // Switch pelo codProduto, conforme o cod um valor diferente
-//        switch(codigoProduto){
-//            // Valores 28, 23 e 25 são os preços dos combos que estão na jframe cardapio
-//            case 1:
-//                valor = 28 * quantidadeCombo;
-//                break;
-//            case 2:
-//                valor = 23 * quantidadeCombo;
-//                break;
-//            case 3:
-//                valor = 25 * quantidadeCombo;
-//                break;
-//            // Caso o codProduto não seja um valor que tenha no cardapio, retorna mensagem de erro
-//            default:
-//                return("Código do produto e/ou quantidade foi informado incorretamente!");
-//                
-//        }
-//         System.out.printf("funcionario:"+funcionario+"\n");
-//         System.out.println(funcionario == 0);
-//        if(funcionario == 0){
-//            desconto = cli.desconto(valor);
-//            desconto = valor - desconto;
-//            
-//        } else {
-//            desconto = fun.desconto(valor);
-//            System.out.printf("desconto funcionario"+desconto );
-//            desconto = valor - desconto;
-//        }
- Pedidos p = new Pedidos();
+        Pedidos p = new Pedidos();
         Clientes cli = new Clientes();
         Funcionarios fun = new Funcionarios();
         // Var valor para armazenar o custo do pedido conforme a quantidade
@@ -210,7 +176,6 @@ public class PedidosDB {
             
         } else {
             desconto = fun.desconto(valor);
-            System.out.printf("desconto funcionario"+desconto );
             desconto = valor - desconto;
         }
         // Vamos setando os valores do nosso pedido conforme os valores que foram passados por parametro

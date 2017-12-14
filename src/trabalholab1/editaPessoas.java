@@ -21,6 +21,7 @@ public class editaPessoas extends javax.swing.JFrame {
      */
     public editaPessoas(int id) {
          initComponents();
+         jTextFieldFormId.setVisible(false);
         // Para fechar a janela e não o sistema
         setDefaultCloseOperation( DISPOSE_ON_CLOSE );
         Conector db = new Conector();

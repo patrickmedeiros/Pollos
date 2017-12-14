@@ -20,14 +20,15 @@ import models.Pessoas;
  * @author gabrielrm
  */
 public class novoPedido extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form NovoPedido
      */
     public novoPedido() {
         initComponents();
         // Para fechar a janela e não o sistema
-        setDefaultCloseOperation( DISPOSE_ON_CLOSE );  
+        setDefaultCloseOperation( DISPOSE_ON_CLOSE ); 
+        jTextFieldFuncionario.setVisible(false); 
     }
 
     /**
@@ -126,6 +127,7 @@ public class novoPedido extends javax.swing.JFrame {
 
         jLabelTelefone.setText("Telefone:");
 
+        jTextFieldFuncionario.setEditable(false);
         jTextFieldFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFuncionarioActionPerformed(evt);
