@@ -26,5 +26,4 @@
   <li>RNF05 - Tempo de resposta desejável menor que 5 segundos para pedidos e cadastros</li>
 </ul>
 <h2>Diagrama ER do banco de dados</h2>
-
-[[https://user-images.githubusercontent.com/3408393/34013387-7a626dd8-e0fe-11e7-9867-e1d095793be8.png|alt=octocat]]
+![alt text](https://user-images.githubusercontent.com/3408393/34013387-7a626dd8-e0fe-11e7-9867-e1d095793be8.png)
