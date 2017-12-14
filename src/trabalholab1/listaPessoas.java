@@ -151,7 +151,7 @@ public class listaPessoas extends javax.swing.JFrame {
             p.setId((int) jTablePessoas.getValueAt(jTablePessoas.getSelectedRow(), 0));
             int idCli = (int) jTablePessoas.getValueAt(jTablePessoas.getSelectedRow(), 0);
             //Chamamos nosso jframe e atribuimos a form
-            editaFuncionarios form = new editaFuncionarios(idCli);
+            editaPessoas form = new editaPessoas(idCli);
             //Aqui setamos para abrir no centro quando aberto
             form.setLocationRelativeTo(null);
             //Deixamos o jframe visivel

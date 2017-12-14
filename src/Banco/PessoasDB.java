@@ -28,7 +28,7 @@ public class PessoasDB {
     // Busca todos as pessoas cadastrados no banco e retorna ArrayList
     public ArrayList<Clientes> listapessoasgeral(){
      try{
-         String SQL = "SELECT * FROM clientes";
+         String SQL = "SELECT * FROM pessoas";
          PreparedStatement ps = db.getConnections().prepareStatement(SQL);
          ResultSet rs = ps.executeQuery();
          ArrayList<Clientes> lista = new ArrayList<Clientes>();
