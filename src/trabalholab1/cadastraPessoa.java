@@ -5,6 +5,10 @@
  */
 package trabalholab1;
 
+import Banco.Conector;
+import Banco.PessoasDB;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Patrick
@@ -46,8 +50,8 @@ public class cadastraPessoa extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jTextFieldFormCpf = new javax.swing.JTextField();
         jButtonCadastra = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButtonCliente = new javax.swing.JRadioButton();
+        jRadioButtonFuncionario = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,14 +119,14 @@ public class cadastraPessoa extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Clientes");
-        jRadioButton1.setActionCommand("clientes");
+        buttonGroup1.add(jRadioButtonCliente);
+        jRadioButtonCliente.setSelected(true);
+        jRadioButtonCliente.setText("Clientes");
+        jRadioButtonCliente.setActionCommand("clientes");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Funcionário");
-        jRadioButton2.setActionCommand("funcionário");
+        buttonGroup1.add(jRadioButtonFuncionario);
+        jRadioButtonFuncionario.setText("Funcionário");
+        jRadioButtonFuncionario.setActionCommand("funcionário");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -169,9 +173,9 @@ public class cadastraPessoa extends javax.swing.JFrame {
                                 .addComponent(jLabel23))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(171, 171, 171)
-                                .addComponent(jRadioButton1)))
+                                .addComponent(jRadioButtonCliente)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)))
+                        .addComponent(jRadioButtonFuncionario)))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -181,8 +185,8 @@ public class cadastraPessoa extends javax.swing.JFrame {
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(jRadioButtonCliente)
+                    .addComponent(jRadioButtonFuncionario))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldFormNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,18 +260,25 @@ public class cadastraPessoa extends javax.swing.JFrame {
     private void jButtonCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastraActionPerformed
         // Aqui chamamos a classe dados e atribuimos a cliente
         Conector db = new Conector();
-        ClienteDB cliente = new ClienteDB(db);
+        PessoasDB pessoa = new PessoasDB(db);
+        int funcionario;
         // Declaramos as variáveis e pegamos os valores dos campos com o método getText
+        boolean radio = jRadioButtonCliente.isSelected();
         String nome = jTextFieldFormNome.getText();
         String cpf = jTextFieldFormCpf.getText();
-        String telefone = jTextFieldFormTelefoneCliente.getText();
+        String telefone = jTextFieldFormTelefone.getText();
         String endereco = jTextFieldFormEndereco.getText();
         String obs = jTextAreaObservacoes.getText();
         String email = jTextFieldFormEmail.getText();
         // Como idade é um inteiro parseamos o valor do campo que é texto para inteiro
         int idade = Integer.parseInt(jTextFieldFormIdade.getText());
+        if(radio == true){
+            funcionario = 0;
+        }else{
+            funcionario = 1;
+        }
         // Declaramos uma variável para pegar o retorno da chamada da função que fica dentro da classe Dados
-        String retorno = cliente.cadastraCliente(nome,  cpf,  telefone,  endereco,  obs, email, idade);
+        String retorno = pessoa.cadastraPessoa(nome,  cpf,  telefone,  endereco,  obs, email, idade, funcionario);
         // Imprimimos na tela a mensagem de retorno
         JOptionPane.showMessageDialog(null, retorno);
         //Chamamos nosso jframe e atribuimos a form
@@ -330,8 +341,8 @@ public class cadastraPessoa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButtonCliente;
+    private javax.swing.JRadioButton jRadioButtonFuncionario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaObservacoes;
     private javax.swing.JTextField jTextFieldFormCpf;

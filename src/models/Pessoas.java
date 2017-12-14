@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Patrick
+ * @author gabrielrm
  */
 public class Pessoas {
 
@@ -22,10 +22,11 @@ public class Pessoas {
     private String obs;
     private int idade;
     private int id;
+    private int funcionario;
 
     public Pessoas() { }   
     
-    public Pessoas(String nome, String cpf, String endereco, String telefone, String email, String obs, int idade, int id) {
+    public Pessoas(String nome, String cpf, String endereco, String telefone, String email, String obs, int idade, int id, int funcionario) {
         super();
         this.nome = nome;
         this.cpf = cpf;
@@ -35,6 +36,7 @@ public class Pessoas {
         this.obs = obs;
         this.idade = idade;
         this.id = id;
+        this.funcionario = funcionario;
     }
 
     public String getNome() {
@@ -110,6 +112,13 @@ public class Pessoas {
         this.id = id;
     }
     
+    public int getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(int funcionario) {
+        this.funcionario = funcionario;
+    }
     
     public double desconto(double desc){
         return this.desc = desc * 0.1;

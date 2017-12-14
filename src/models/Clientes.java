@@ -12,8 +12,8 @@ package models;
 public class Clientes extends Pessoas{
     public int id;
     
-    public Clientes(String nome, String cpf, String endereco,String telefone, String email, String obs, int idade, int id) {
-        super(nome, cpf, endereco, telefone, email, obs, idade, id);
+    public Clientes(String nome, String cpf, String endereco,String telefone, String email, String obs, int idade, int id, int funcionarios) {
+        super(nome, cpf, endereco, telefone, email, obs, idade, id, funcionarios);
     }
 
     public Clientes() {

@@ -6,6 +6,7 @@
 package trabalholab1;
 
 import Banco.Conector;
+import Banco.PessoasDB;
 import javax.swing.JOptionPane;
 
 /**
