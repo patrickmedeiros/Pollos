@@ -52,11 +52,11 @@ public class Pessoas {
     }
 
     public void setCpf(String cpf) {
-        if(cpf.length() != 11){
-            JOptionPane.showMessageDialog(null, "O CPF deve conter 11 digitos!", "Erro", JOptionPane.ERROR_MESSAGE);
-        }else{
+//        if(cpf.length() != 11){
+//            JOptionPane.showMessageDialog(null, "O CPF deve conter 11 digitos!", "Erro", JOptionPane.ERROR_MESSAGE);
+//        }else{
             this.cpf = cpf;
-        }
+ //       }
     }
 
     public String getEndereco() {
@@ -97,11 +97,11 @@ public class Pessoas {
     }
 
     public void setIdade(int idade) {
-        if(idade <= 0){
-            JOptionPane.showMessageDialog(null,"Idade inválida", "Atenção", JOptionPane.ERROR_MESSAGE);
-        }else{
+//        if(idade <= 0){
+//            JOptionPane.showMessageDialog(null,"Idade inválida", "Atenção", JOptionPane.ERROR_MESSAGE);
+//        }else{
         this.idade = idade;
-        }
+  //      }
     }
 
     public int getId() {
