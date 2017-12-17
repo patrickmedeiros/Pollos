@@ -28,3 +28,7 @@
 <h2>Diagrama ER do banco de dados</h2>
 
 ![bd pollos img](https://user-images.githubusercontent.com/3408393/34013387-7a626dd8-e0fe-11e7-9867-e1d095793be8.png)
+
+<h2> Diagrama de classes </h2>
+
+![pollos](https://user-images.githubusercontent.com/34414598/34082933-aff16a56-e34e-11e7-8132-f344e10c195a.jpg)
